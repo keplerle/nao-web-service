@@ -24,7 +24,7 @@ public class PersonController {
 // GET qui permet de récupérer des informations identifié par l'URI de la demande
 @RequestMapping(value = "/{id}", method = RequestMethod.GET)
 public ResponseEntity<Person> getPerson(@PathVariable("id") Long id) {
-   Person person = perService.getById(id);
+   Person person = (Person) perService.getById(id);
     if (person == null) {
         return new ResponseEntity<Person>(HttpStatus.NOT_FOUND);
     }
@@ -44,14 +44,13 @@ public ResponseEntity<Person> getPerson(@PathVariable("id") Long id) {
    // POST demande au server d'origine d'accepter l'entité incluse dans la requete ent tant que nouveau subordonné de la ressource identifié par l'URI
     @RequestMapping(value="", method = RequestMethod.POST)
     public ResponseEntity<Person> addPerson(@RequestBody Person person){
-        System.out.println(person);
-        person.setId(1);
+        perService.save(person);
         ResponseEntity<Person> responseEntity = new ResponseEntity<Person>(person,HttpStatus.CREATED);
         return responseEntity;
     }
     @RequestMapping(value="", method=RequestMethod.PUT)
     public ResponseEntity<Person> updatePerson(@RequestBody Person person){
-        Person existingPer = perService.getById(person.getId());
+        Person existingPer = (Person) perService.getById(person.getId());
         if (existingPer == null) {
             return new ResponseEntity<Person>(HttpStatus.NOT_FOUND);
         } else {
@@ -62,7 +61,7 @@ public ResponseEntity<Person> getPerson(@PathVariable("id") Long id) {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteEmployee(@PathVariable("id") Long id) {
-        Person person = perService.getById(id);
+        Person person = (Person) perService.getById(id);
         if (person == null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         } else {
