@@ -10,7 +10,5 @@ public class Main {
 
     public static void main(String[] args){
         SpringApplication.run(Main.class, args);
-        Person person=new Person();
-        System.out.println(person);
     }
 }
