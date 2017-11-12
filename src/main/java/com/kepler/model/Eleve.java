@@ -1,5 +1,4 @@
 package com.kepler.model;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -16,23 +15,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "person")
+@Table(name = "eleve")
 
 @Getter
 @Setter
 @ToString
-public class Person implements java.io.Serializable {
-
+public class Eleve implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "name", length = 50)
-    private String name;
+    @Column(name = "nom", length = 50)
+    private String nom;
 
-    @Column(name = "age")
-    private int age;
+    @Column(name = "prenom", length = 50)
+    private String prenom;
 
+    @Column(name = "bonne_reponse")
+    private int bonne_reponse;
 
+    @Column(name = "fausse_reponse")
+    private int fausse_reponse;
 }
