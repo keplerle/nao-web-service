@@ -46,7 +46,6 @@
             <version>42.1.4</version>
         </dependency>
     </dependencies>
-
     <repositories>
         <repository>
             <id>spring-libs-release</id>
