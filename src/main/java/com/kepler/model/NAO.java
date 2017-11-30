@@ -26,6 +26,10 @@ public class NAO implements java.io.Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
+
+    @Column(name = "Ip")
+    private String ip;
+
     @Column(name = "temperature_moteur")
     private int temperature_moteur;
 
