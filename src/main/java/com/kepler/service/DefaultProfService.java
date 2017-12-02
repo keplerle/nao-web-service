@@ -23,7 +23,7 @@ public class DefaultProfService implements ProfService {
 
     @Override
     public Prof getByString(String string) {
-        return profRepository.findOne(string);
+        return profRepository.findByMail(string);
     }
 
     @Override

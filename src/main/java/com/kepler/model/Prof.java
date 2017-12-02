@@ -24,7 +24,7 @@ public class Prof implements java.io.Serializable {
     @Column(name = "prenom", length = 50)
     private String prenom;
 
-    @Column(name = "mail", length = 50)
+    @Column(name = "mail", nullable = false, unique = true)
     private String mail;
 
     @Column(name = "password", length = 50)
