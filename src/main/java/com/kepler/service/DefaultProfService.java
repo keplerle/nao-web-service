@@ -10,27 +10,29 @@ import java.io.Serializable;
 import java.util.List;
 
 @Service
-public class DefaultProfService implements ProfService{
+public class DefaultProfService implements ProfService {
 
-        @Autowired
-        private ProfRepository profRepository;
 
-        @Override
-        public Prof save(Prof entity) {
-            return profRepository.save(entity);
-        }
+    @Autowired
+    private ProfRepository profRepository;
 
-        @Override
-        public Prof getById(Serializable id) {
-            return profRepository.findOne((Long) id);
-        }
+    @Override
+    public Prof save(Prof entity) {
+        return profRepository.save(entity);
+    }
 
-        @Override
-        public List<Prof> getAll() {
-            return profRepository.findAll();
-        }
+    @Override
+    public Prof getByString(String string) {
+        return profRepository.findOne(string);
+    }
 
-        @Override
-        public void delete(Serializable id) {  profRepository.delete((Long) id);
-        }
+    @Override
+    public List<Prof> getAllByString(Iterable<String> strings) {
+        return profRepository.findAll(strings);
+    }
+
+    @Override
+    public void delete(String string) {
+        profRepository.delete(string);
+    }
 }

@@ -35,6 +35,9 @@ public class Eleve implements java.io.Serializable {
     @Column(name = "classe", length = 50)
     private String classe;
 
+    @Column(name = "prof", length = 50)
+    private String prof;
+
     @Column(name = "bonne_reponse")
     private int bonne_reponse;
 

@@ -20,18 +20,18 @@ public class DefaultNAOService implements NAOService{
             return naoRepository.save(entity);
         }
 
-        @Override
-        public NAO getById(Serializable id) {
-            return naoRepository.findOne((Long) id);
+    @Override
+        public NAO getByString(String ip) {
+            return naoRepository.findOne(ip);
         }
 
         @Override
-        public List<NAO> getAll() {
-            return naoRepository.findAll();
+        public List<NAO> getAllByString(Iterable<String> strings) {
+            return naoRepository.findAll(strings);
         }
 
         @Override
-        public void delete(Serializable id) {
-            naoRepository.delete((Long) id);
+        public void delete(String ip) {
+            naoRepository.delete(ip);
         }
 }

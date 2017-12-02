@@ -27,8 +27,14 @@ public class NAO implements java.io.Serializable {
     private Long id;
 
 
-    @Column(name = "Ip")
+    @Column(name = "ip")
     private String ip;
+
+    @Column(name = "nom")
+    private String nom;
+
+    @Column(name = "etat_robot")
+    private int etat_robot;
 
     @Column(name = "temperature_moteur")
     private int temperature_moteur;
@@ -38,6 +44,12 @@ public class NAO implements java.io.Serializable {
 
     @Column(name = "batterie")
     private int batterie;
+
+    @Column(name = "operande")
+    private boolean operande;
+
+    @Column(name = "operateur")
+    private boolean operateur;
 
     @Column(name = "plus")
     private boolean plus;

@@ -25,24 +25,24 @@ public class EleveController {
     EleveService eleveService;
 
     // GET qui permet de récupérer des informations identifié par l'URI de la demande
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Eleve> getEleve(@PathVariable("id") Long id) {
-        Eleve eleve = eleveService.getById(id);
+    @RequestMapping(value = "/{prof}", method = RequestMethod.GET)
+    public ResponseEntity<Eleve> getEleve(@PathVariable("prof") String prof) {
+        Eleve eleve = eleveService.getByString(prof);
         if (eleve == null) {
             return new ResponseEntity<Eleve>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<Eleve>(eleve, HttpStatus.OK);
 
     }
-
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public ResponseEntity<List<Eleve>> getAllEleves() {
-        List<Eleve> eleves = eleveService.getAll();
+/*
+    @RequestMapping(value = "/{prof}", method = RequestMethod.GET)
+    public ResponseEntity<List<Eleve>> getAllEleves(Iterable<String> ) {
+        List<Eleve> eleves = eleveService.getAllByString();
         if (eleves.isEmpty()) {
             return new ResponseEntity<List<Eleve>>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<Eleve>>(eleves, HttpStatus.OK);
-    }
+    }*/
 
     // POST demande au server d'origine d'accepter l'entité incluse dans la requete ent tant que nouveau subordonné de la ressource identifié par l'URI
     @RequestMapping(value = "", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
@@ -57,7 +57,7 @@ public class EleveController {
 
     @RequestMapping(value = "", method = RequestMethod.PUT)
     public ResponseEntity<Eleve> updateEleve(@RequestBody Eleve eleve) {
-        Eleve existingEle = eleveService.getById(eleve.getId());
+        Eleve existingEle = eleveService.getByString(eleve.getProf());
         if (existingEle == null) {
             return new ResponseEntity<Eleve>(HttpStatus.NOT_FOUND);
         } else {
@@ -65,19 +65,18 @@ public class EleveController {
             return new ResponseEntity<Eleve>(HttpStatus.OK);
         }
     }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deleteEleve(@PathVariable("id") Long id) {
-        Eleve eleve = eleveService.getById(id);
-        if (eleve == null) {
+/*
+    @RequestMapping(value = "/{mail}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteProf(@PathVariable("mail") String mail) {
+       Eleve prof = eleveService.getByString(mail);
+        if (prof == null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         } else {
-            eleveService.delete(id);
+            eleveService.delete(mail);
             return new ResponseEntity<Void>(HttpStatus.GONE);
 
         }
-
-    }
+    }*/
 }
 
 

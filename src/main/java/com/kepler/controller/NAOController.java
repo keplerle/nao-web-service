@@ -21,9 +21,9 @@ public class NAOController {
     NAOService naoService;
 
 // GET qui permet de récupérer des informations identifié par l'URI de la demande
-@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-public ResponseEntity<NAO> getNAO(@PathVariable("id") Long id) {
-   NAO nao =  naoService.getById(id);
+@RequestMapping(value = "/{ip}", method = RequestMethod.GET)
+public ResponseEntity<NAO> getNAO(@PathVariable("ip") String ip) {
+   NAO nao =  naoService.getByString(ip);
     if (nao == null) {
         return new ResponseEntity<NAO>(HttpStatus.NOT_FOUND);
     }
@@ -40,7 +40,7 @@ public ResponseEntity<NAO> getNAO(@PathVariable("id") Long id) {
     }
     @RequestMapping(value="", method=RequestMethod.PUT)
     public ResponseEntity<NAO> updateNAO(@RequestBody NAO nao){
-        NAO existingnao =  naoService.getById(nao.getId());
+        NAO existingnao =  naoService.getByString(nao.getIp());
         if (existingnao == null) {
             return new ResponseEntity<NAO>(HttpStatus.NOT_FOUND);
         } else {
@@ -49,13 +49,13 @@ public ResponseEntity<NAO> getNAO(@PathVariable("id") Long id) {
         }
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deleteNAO(@PathVariable("id") Long id) {
-        NAO person = naoService.getById(id);
+    @RequestMapping(value = "/{ip}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteNAO(@PathVariable("ip") String ip) {
+        NAO person = naoService.getByString(ip);
         if (person == null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         } else {
-            naoService.delete(id);
+            naoService.delete(ip);
             return new ResponseEntity<Void>(HttpStatus.GONE);
 
         }

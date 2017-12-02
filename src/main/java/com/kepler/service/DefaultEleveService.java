@@ -20,18 +20,19 @@ public class DefaultEleveService implements EleveService{
             return eleveRepository.save(entity);
         }
 
-        @Override
-        public Eleve getById(Serializable id) {
-            return eleveRepository.findOne((Long) id);
-        }
+    @Override
+    public Eleve getByString(String prof) {
+        return eleveRepository.findOne(prof);
+    }
+
 
         @Override
-        public List<Eleve> getAll() {
-            return eleveRepository.findAll();
+        public List<Eleve> getAllByString(Iterable<String> strings) {
+            return eleveRepository.findAll(strings);
         }
 
-        @Override
-        public void delete(Serializable id) {
-            eleveRepository.delete((Long) id);
-        }
+    @Override
+    public void delete(String prof) {
+        eleveRepository.delete(prof);
+    }
 }

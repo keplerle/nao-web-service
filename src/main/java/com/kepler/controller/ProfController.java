@@ -23,23 +23,14 @@ public class ProfController {
     ProfService profService;
 
     // GET qui permet de récupérer des informations identifié par l'URI de la demande
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Prof> getProf(@PathVariable("id") Long id) {
-        Prof prof = profService.getById(id);
+    @RequestMapping(value = "/{mail}", method = RequestMethod.GET)
+    public ResponseEntity<Prof> getProfByMail(@PathVariable("mail") String mail) {
+        Prof prof = profService.getByString(mail);
         if (prof == null) {
             return new ResponseEntity<Prof>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<Prof>(prof, HttpStatus.OK);
 
-    }
-
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public ResponseEntity<List<Prof>> getAllProfs() {
-        List<Prof> profs = profService.getAll();
-        if (profs.isEmpty()) {
-            return new ResponseEntity<List<Prof>>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<List<Prof>>(profs, HttpStatus.OK);
     }
 
     // POST demande au server d'origine d'accepter l'entité incluse dans la requete ent tant que nouveau subordonné de la ressource identifié par l'URI
@@ -52,10 +43,10 @@ public class ProfController {
         return responseEntity;
 
     }
-
+/*
     @RequestMapping(value = "", method = RequestMethod.PUT)
     public ResponseEntity<Prof> updateProf(@RequestBody Prof prof) {
-        Prof existingEle = profService.getById(prof.getId());
+        Prof existingEle = profService.getByString(prof.getMail());
         if (existingEle == null) {
             return new ResponseEntity<Prof>(HttpStatus.NOT_FOUND);
         } else {
@@ -64,18 +55,18 @@ public class ProfController {
         }
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deleteProf(@PathVariable("id") Long id) {
-        Prof prof = profService.getById(id);
+    @RequestMapping(value = "/{mail}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteProf(@PathVariable("mail") String mail) {
+        Prof prof = profService.getByString(mail);
         if (prof == null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         } else {
-            profService.delete(id);
+            profService.delete(mail);
             return new ResponseEntity<Void>(HttpStatus.GONE);
 
         }
 
-    }
+    }*/
 }
 
 
