@@ -21,15 +21,15 @@ public class DefaultNAOService implements NAOService{
         }
 
     @Override
-        public NAO getByString(String ip) {
+        public NAO getBy(String ip) {
             return naoRepository.findOne(ip);
         }
 
-        @Override
+        /*@Override
         public List<NAO> getAllByString(Iterable<String> strings) {
             return naoRepository.findAll(strings);
         }
-
+*/
         @Override
         public void delete(String ip) {
             naoRepository.delete(ip);

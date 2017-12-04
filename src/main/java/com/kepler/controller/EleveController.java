@@ -4,6 +4,7 @@ import com.kepler.model.Eleve;
 import com.kepler.service.EleveService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +26,9 @@ public class EleveController {
     EleveService eleveService;
 
     // GET qui permet de récupérer des informations identifié par l'URI de la demande
-    @RequestMapping(value = "/{prof}", method = RequestMethod.GET)
-    public ResponseEntity<Eleve> getEleve(@PathVariable("prof") String prof) {
-        Eleve eleve = eleveService.getByString(prof);
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ResponseEntity<Eleve> getEleve(@Param("ip") String ip) {
+        Eleve eleve = eleveService.getBy(ip);
         if (eleve == null) {
             return new ResponseEntity<Eleve>(HttpStatus.NOT_FOUND);
         }
@@ -57,7 +58,7 @@ public class EleveController {
 
     @RequestMapping(value = "", method = RequestMethod.PUT)
     public ResponseEntity<Eleve> updateEleve(@RequestBody Eleve eleve) {
-        Eleve existingEle = eleveService.getByString(eleve.getProf());
+        Eleve existingEle = eleveService.getBy(eleve.getProf());
         if (existingEle == null) {
             return new ResponseEntity<Eleve>(HttpStatus.NOT_FOUND);
         } else {

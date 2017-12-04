@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 @ToString
 public class Prof implements java.io.Serializable {
-    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
@@ -23,7 +23,7 @@ public class Prof implements java.io.Serializable {
 
     @Column(name = "prenom", length = 50)
     private String prenom;
-
+    @Id
     @Column(name = "mail", nullable = false, unique = true)
     private String mail;
 

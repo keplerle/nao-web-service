@@ -3,6 +3,7 @@ package com.kepler.controller;
 import com.kepler.model.NAO;
 import com.kepler.service.NAOService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,9 +22,9 @@ public class NAOController {
     NAOService naoService;
 
 // GET qui permet de récupérer des informations identifié par l'URI de la demande
-@RequestMapping(value = "/{ip}", method = RequestMethod.GET)
-public ResponseEntity<NAO> getNAO(@PathVariable("ip") String ip) {
-   NAO nao =  naoService.getByString(ip);
+@RequestMapping(value = "", method = RequestMethod.GET)
+public ResponseEntity<NAO> getNAO(@Param("ip") String ip) {
+   NAO nao =  naoService.getBy(ip);
     if (nao == null) {
         return new ResponseEntity<NAO>(HttpStatus.NOT_FOUND);
     }
@@ -40,7 +41,7 @@ public ResponseEntity<NAO> getNAO(@PathVariable("ip") String ip) {
     }
     @RequestMapping(value="", method=RequestMethod.PUT)
     public ResponseEntity<NAO> updateNAO(@RequestBody NAO nao){
-        NAO existingnao =  naoService.getByString(nao.getIp());
+        NAO existingnao =  naoService.getBy(nao.getIp());
         if (existingnao == null) {
             return new ResponseEntity<NAO>(HttpStatus.NOT_FOUND);
         } else {
@@ -49,9 +50,9 @@ public ResponseEntity<NAO> getNAO(@PathVariable("ip") String ip) {
         }
     }
 
-    @RequestMapping(value = "/{ip}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deleteNAO(@PathVariable("ip") String ip) {
-        NAO person = naoService.getByString(ip);
+    @RequestMapping(value = "", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteNAO(@Param("ip") String ip) {
+        NAO person = naoService.getBy(ip);
         if (person == null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         } else {

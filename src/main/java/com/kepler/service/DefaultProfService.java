@@ -22,17 +22,17 @@ public class DefaultProfService implements ProfService {
     }
 
     @Override
-    public Prof getByString(String string) {
-        return profRepository.findByMail(string);
+    public Prof getBy(String mail) {
+        return profRepository.findOne(mail);
     }
 
-    @Override
-    public List<Prof> getAllByString(Iterable<String> strings) {
-        return profRepository.findAll(strings);
+   /* @Override
+    public List<Prof> getAllByString() {
+        return profRepository.findAll();
     }
-
+*/
     @Override
-    public void delete(String string) {
-        profRepository.delete(string);
+    public void delete(String mail) {
+        profRepository.delete(mail);
     }
 }

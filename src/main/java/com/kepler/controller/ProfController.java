@@ -4,6 +4,7 @@ import com.kepler.model.Prof;
 import com.kepler.service.ProfService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,9 +24,9 @@ public class ProfController {
     ProfService profService;
 
     // GET qui permet de récupérer des informations identifié par l'URI de la demande
-    @RequestMapping(value = "/{mail}", method = RequestMethod.GET)
-    public ResponseEntity<Prof> getProfByMail(@PathVariable("mail") String mail) {
-        Prof prof = profService.getByString(mail);
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ResponseEntity<Prof> getProf(@Param("mail") String mail) {
+        Prof prof = profService.getBy(mail);
         if (prof == null) {
             return new ResponseEntity<Prof>(HttpStatus.NOT_FOUND);
         }

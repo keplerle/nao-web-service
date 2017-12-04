@@ -21,16 +21,16 @@ public class DefaultEleveService implements EleveService{
         }
 
     @Override
-    public Eleve getByString(String prof) {
+    public Eleve getBy(String prof) {
         return eleveRepository.findOne(prof);
     }
 
 
-        @Override
+       /* @Override
         public List<Eleve> getAllByString(Iterable<String> strings) {
             return eleveRepository.findAll(strings);
         }
-
+*/
     @Override
     public void delete(String prof) {
         eleveRepository.delete(prof);

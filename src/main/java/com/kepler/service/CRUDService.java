@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface CRUDService<P> {
     P save(P entity);
-    P getByString(String string);
-    List<P> getAllByString(Iterable<String> strings);
+    P getBy(String string);
+    //List<P> getAllByString();
     void delete(String string);
 }
