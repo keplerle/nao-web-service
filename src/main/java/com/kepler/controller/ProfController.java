@@ -55,10 +55,10 @@ public class ProfController {
             return new ResponseEntity<Prof>(HttpStatus.OK);
         }
     }
-
-    @RequestMapping(value = "/{mail}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deleteProf(@PathVariable("mail") String mail) {
-        Prof prof = profService.getByString(mail);
+*/
+    @RequestMapping(value = "", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteProf(@Param("mail") String mail) {
+        Prof prof = profService.getBy(mail);
         if (prof == null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         } else {
@@ -67,7 +67,7 @@ public class ProfController {
 
         }
 
-    }*/
+    }
 }
 
 
