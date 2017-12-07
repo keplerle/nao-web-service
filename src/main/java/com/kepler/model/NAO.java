@@ -21,17 +21,15 @@ import javax.persistence.Table;
 @Setter
 @ToString
 public class NAO implements java.io.Serializable {
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Long id;
-
     @Id
     @Column(name = "ip")
     private String ip;
 
     @Column(name = "nom")
     private String nom;
+
+    @Column(name = "mailprof")
+    private String mailprof;
 
     @Column(name = "etat_robot")
     private int etat_robot;

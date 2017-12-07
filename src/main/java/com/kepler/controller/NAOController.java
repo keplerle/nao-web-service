@@ -22,8 +22,8 @@ public class NAOController {
     NAOService naoService;
 
 // GET qui permet de récupérer des informations identifié par l'URI de la demande
-@RequestMapping(value = "", method = RequestMethod.GET)
-public ResponseEntity<NAO> getNAO(@Param("ip") String ip) {
+@RequestMapping(value = "/ip", method = RequestMethod.GET)
+public ResponseEntity<NAO> getNAOip(@Param("ip") String ip) {
    NAO nao =  naoService.getBy(ip);
     if (nao == null) {
         return new ResponseEntity<NAO>(HttpStatus.NOT_FOUND);
@@ -31,6 +31,16 @@ public ResponseEntity<NAO> getNAO(@Param("ip") String ip) {
     return new ResponseEntity<NAO>(nao, HttpStatus.OK);
 
 }
+
+    @RequestMapping(value = "/prof", method = RequestMethod.GET)
+    public ResponseEntity<NAO> getNAOProf(@Param("mailprof") String ip) {
+        NAO nao =  naoService.getBy(ip);
+        if (nao == null) {
+            return new ResponseEntity<NAO>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<NAO>(nao, HttpStatus.OK);
+
+    }
 
    // POST demande au server d'origine d'accepter l'entité incluse dans la requete ent tant que nouveau subordonné de la ressource identifié par l'URI
     @RequestMapping(value="", method = RequestMethod.POST)
