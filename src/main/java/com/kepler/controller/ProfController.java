@@ -44,10 +44,10 @@ public class ProfController {
         return responseEntity;
 
     }
-/*
+
     @RequestMapping(value = "", method = RequestMethod.PUT)
     public ResponseEntity<Prof> updateProf(@RequestBody Prof prof) {
-        Prof existingEle = profService.getByString(prof.getMail());
+        Prof existingEle = profService.getBy(prof.getMail());
         if (existingEle == null) {
             return new ResponseEntity<Prof>(HttpStatus.NOT_FOUND);
         } else {
@@ -55,7 +55,7 @@ public class ProfController {
             return new ResponseEntity<Prof>(HttpStatus.OK);
         }
     }
-*/
+
     @RequestMapping(value = "", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteProf(@Param("mail") String mail) {
         Prof prof = profService.getBy(mail);

@@ -56,7 +56,7 @@ public class EleveController {
 
     }
 
-    @RequestMapping(value = "", method = RequestMethod.PUT)
+    @RequestMapping(value = "", method = RequestMethod.PUT,consumes = "application/json", produces = "application/json")
     public ResponseEntity<Eleve> updateEleve(@RequestBody Eleve eleve) {
         Eleve existingEle = eleveService.getBy(eleve.getProf());
         if (existingEle == null) {
@@ -66,10 +66,10 @@ public class EleveController {
             return new ResponseEntity<Eleve>(HttpStatus.OK);
         }
     }
-/*
-    @RequestMapping(value = "/{mail}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deleteProf(@PathVariable("mail") String mail) {
-       Eleve prof = eleveService.getByString(mail);
+
+    @RequestMapping(value = "", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteProf(@Param("mail") String mail) {
+       Eleve prof = eleveService.getBy(mail);
         if (prof == null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         } else {
@@ -77,7 +77,7 @@ public class EleveController {
             return new ResponseEntity<Void>(HttpStatus.GONE);
 
         }
-    }*/
+    }
 }
 
 
