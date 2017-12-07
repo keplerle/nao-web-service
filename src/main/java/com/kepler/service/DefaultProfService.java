@@ -26,11 +26,6 @@ public class DefaultProfService implements ProfService {
         return profRepository.findOne(mail);
     }
 
-   /* @Override
-    public List<Prof> getAllByString() {
-        return profRepository.findAll();
-    }
-*/
     @Override
     public void delete(String mail) {
         profRepository.delete(mail);

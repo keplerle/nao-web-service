@@ -25,11 +25,11 @@ public class DefaultNAOService implements NAOService{
             return naoRepository.findOne(ip);
         }
 
-        /*@Override
-        public List<NAO> getAllByString(Iterable<String> strings) {
-            return naoRepository.findAll(strings);
+        @Override
+        public List<NAO> findByMailprof(String mail) {
+            return naoRepository.findByMailprof(mail);
         }
-*/
+
         @Override
         public void delete(String ip) {
             naoRepository.delete(ip);

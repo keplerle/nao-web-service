@@ -25,27 +25,27 @@ public class EleveController {
     @Autowired
     EleveService eleveService;
 
-    // GET qui permet de récupérer des informations identifié par l'URI de la demande
+    // GET 1 eleve par id
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public ResponseEntity<Eleve> getEleve(@Param("ip") String ip) {
-        Eleve eleve = eleveService.getBy(ip);
+    public ResponseEntity<Eleve> getEleve(@Param("id") String id) {
+        Eleve eleve = eleveService.getBy(id);
         if (eleve == null) {
             return new ResponseEntity<Eleve>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<Eleve>(eleve, HttpStatus.OK);
 
     }
-/*
-    @RequestMapping(value = "/{prof}", method = RequestMethod.GET)
-    public ResponseEntity<List<Eleve>> getAllEleves(Iterable<String> ) {
-        List<Eleve> eleves = eleveService.getAllByString();
+    // GET tout eleves par prof
+    @RequestMapping(value = "/prof", method = RequestMethod.GET)
+    public ResponseEntity<List<Eleve>> getAllEleves(@Param("prof") String prof ) {
+        List<Eleve> eleves = eleveService.findByProf(prof);
         if (eleves.isEmpty()) {
             return new ResponseEntity<List<Eleve>>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<Eleve>>(eleves, HttpStatus.OK);
-    }*/
+    }
 
-    // POST demande au server d'origine d'accepter l'entité incluse dans la requete ent tant que nouveau subordonné de la ressource identifié par l'URI
+    // save un eleve
     @RequestMapping(value = "", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<Eleve> addEleve(@RequestBody Eleve eleve) {
         //LOGGER.info("POST effectué");
@@ -55,7 +55,7 @@ public class EleveController {
         return responseEntity;
 
     }
-
+    // met a jour un eleve
     @RequestMapping(value = "", method = RequestMethod.PUT,consumes = "application/json", produces = "application/json")
     public ResponseEntity<Eleve> updateEleve(@RequestBody Eleve eleve) {
         Eleve existingEle = eleveService.getBy(eleve.getProf());
@@ -66,7 +66,7 @@ public class EleveController {
             return new ResponseEntity<Eleve>(HttpStatus.OK);
         }
     }
-
+    // Supprime un eleve
     @RequestMapping(value = "", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteProf(@Param("mail") String mail) {
        Eleve prof = eleveService.getBy(mail);

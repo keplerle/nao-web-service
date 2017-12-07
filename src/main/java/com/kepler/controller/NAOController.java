@@ -33,12 +33,22 @@ public ResponseEntity<NAO> getNAOip(@Param("ip") String ip) {
 }
 
     @RequestMapping(value = "/prof", method = RequestMethod.GET)
-    public ResponseEntity<NAO> getNAOProf(@Param("mailprof") String ip) {
-        NAO nao =  naoService.getBy(ip);
+    public ResponseEntity<NAO> getNAOProf(@Param("mailprof") String mail) {
+        NAO nao =  naoService.getBy(mail);
         if (nao == null) {
             return new ResponseEntity<NAO>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<NAO>(nao, HttpStatus.OK);
+
+    }
+
+    @RequestMapping(value = "/aprof", method = RequestMethod.GET)
+    public ResponseEntity<List<NAO>> getAllNAOProf(@Param("mailprof") String mail) {
+        List<NAO> naos =  naoService.findByMailprof(mail);
+        if (naos == null) {
+            return new ResponseEntity<List<NAO>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<NAO>>(naos, HttpStatus.OK);
 
     }
 

@@ -26,11 +26,11 @@ public class DefaultEleveService implements EleveService{
     }
 
 
-       /* @Override
-        public List<Eleve> getAllByString(Iterable<String> strings) {
-            return eleveRepository.findAll(strings);
+        @Override
+        public List<Eleve> findByProf(String prof) {
+            return eleveRepository.findByProf(prof);
         }
-*/
+
     @Override
     public void delete(String prof) {
         eleveRepository.delete(prof);
