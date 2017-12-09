@@ -10,28 +10,28 @@ import java.io.Serializable;
 import java.util.List;
 
 @Service
-public class DefaultNAOService implements NAOService{
+public class DefaultNAOService implements NAOService {
 
-        @Autowired
-        private NAORepository naoRepository;
-
-        @Override
-        public NAO save(NAO entity) {
-            return naoRepository.save(entity);
-        }
+    @Autowired
+    private NAORepository naoRepository;
 
     @Override
-        public NAO getBy(String ip) {
-            return naoRepository.findOne(ip);
-        }
+    public NAO save(NAO entity) {
+        return naoRepository.save(entity);
+    }
 
-        @Override
-        public List<NAO> findByMailprof(String mail) {
-            return naoRepository.findByMailprof(mail);
-        }
+    @Override
+    public NAO getBy(String ip) {
+        return naoRepository.findOne(ip);
+    }
 
-        @Override
-        public void delete(String ip) {
-            naoRepository.delete(ip);
-        }
+    @Override
+    public List<NAO> findByMailprof(String mail) {
+        return naoRepository.findByMailprof(mail);
+    }
+
+    @Override
+    public void delete(String ip) {
+        naoRepository.delete(ip);
+    }
 }

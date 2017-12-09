@@ -27,7 +27,7 @@ public class EleveController {
 
     // GET 1 eleve par id
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public ResponseEntity<Eleve> getEleve(@Param("id") String id) {
+    public ResponseEntity<Eleve> getEleve(String id) {
         Eleve eleve = eleveService.getBy(id);
         if (eleve == null) {
             return new ResponseEntity<Eleve>(HttpStatus.NOT_FOUND);
@@ -37,7 +37,7 @@ public class EleveController {
     }
     // GET tout eleves par prof
     @RequestMapping(value = "/prof", method = RequestMethod.GET)
-    public ResponseEntity<List<Eleve>> getAllEleves(@Param("prof") String prof ) {
+    public ResponseEntity<List<Eleve>> getAllEleves(String prof ) {
         List<Eleve> eleves = eleveService.findByProf(prof);
         if (eleves.isEmpty()) {
             return new ResponseEntity<List<Eleve>>(HttpStatus.NO_CONTENT);

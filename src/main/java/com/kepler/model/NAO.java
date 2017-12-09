@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @ToString
 public class NAO implements java.io.Serializable {
     @Id
-    @Column(name = "ip")
+    @Column(name = "ip", unique = true, nullable = false)
     private String ip;
 
     @Column(name = "nom")

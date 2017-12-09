@@ -25,7 +25,7 @@ public class ProfController {
 
     // GET qui permet de récupérer des informations identifié par l'URI de la demande
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public ResponseEntity<Prof> getProf(@Param("mail") String mail) {
+    public ResponseEntity<Prof> getProf(String mail) {
         Prof prof = profService.getBy(mail);
         if (prof == null) {
             return new ResponseEntity<Prof>(HttpStatus.NOT_FOUND);
