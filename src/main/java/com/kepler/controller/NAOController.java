@@ -62,7 +62,8 @@ public class NAOController {
             return new ResponseEntity<NAO>(HttpStatus.NOT_FOUND);
         } else {
             naoService.save(nao);
-            return new ResponseEntity<NAO>(HttpStatus.OK);
+            ResponseEntity<NAO> responseEntity = new ResponseEntity<NAO>(nao, HttpStatus.CREATED);
+            return responseEntity;
         }
     }
 
