@@ -49,17 +49,8 @@ public class NAO implements java.io.Serializable {
     @Column(name = "operateur")
     private boolean operateur;
 
-    @Column(name = "plus")
-    private boolean plus;
-
-    @Column(name = "moins")
-    private boolean moins;
-
-    @Column(name = "multiple")
-    private boolean multiple;
-
-    @Column(name = "divise")
-    private boolean divise;
+    @Column(name = "code_signe")
+    private int code_signe;
 
 
 
