@@ -34,15 +34,6 @@ public class NAO implements java.io.Serializable {
     @Column(name = "etat_robot")
     private int etat_robot;
 
-    @Column(name = "temperature_moteur")
-    private int temperature_moteur;
-
-    @Column(name = "temperature_hardware")
-    private int temperature_hardware;
-
-    @Column(name = "batterie")
-    private int batterie;
-
     @Column(name = "operande")
     private boolean operande;
 
