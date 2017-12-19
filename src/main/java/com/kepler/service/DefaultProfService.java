@@ -27,7 +27,17 @@ public class DefaultProfService implements ProfService {
     }
 
     @Override
+    public Prof getBy(Serializable id) {
+        return null;
+    }
+
+    @Override
     public void delete(String mail) {
         profRepository.delete(mail);
+    }
+
+    @Override
+    public void delete(Serializable id) {
+
     }
 }

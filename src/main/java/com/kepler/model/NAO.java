@@ -31,17 +31,23 @@ public class NAO implements java.io.Serializable {
     @Column(name = "mailprof")
     private String mailprof;
 
-    @Column(name = "etat_robot")
-    private int etat_robot;
+    @Column(name = "etat_batterie")
+    private int etat_batterie;
 
-    @Column(name = "operande")
-    private boolean operande;
+    @Column(name = "etat_moteur")
+    private int etat_moteur;
+
+    @Column(name = "niveau")
+    private int niveau;
 
     @Column(name = "operateur")
-    private boolean operateur;
+    private int operateur;
 
     @Column(name = "code_signe")
     private int code_signe;
+
+    @Column(name = "nbr_partie")
+    private int nbr_partie;
 
 
 

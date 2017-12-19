@@ -27,7 +27,7 @@ public class EleveController {
 
     // GET 1 eleve par id
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public ResponseEntity<Eleve> getEleve(String id) {
+    public ResponseEntity<Eleve> getEleve(Long id) {
         Eleve eleve = eleveService.getBy(id);
         if (eleve == null) {
             return new ResponseEntity<Eleve>(HttpStatus.NOT_FOUND);
@@ -58,7 +58,7 @@ public class EleveController {
     // met a jour un eleve
     @RequestMapping(value = "", method = RequestMethod.PUT,consumes = "application/json", produces = "application/json")
     public ResponseEntity<Eleve> updateEleve(@RequestBody Eleve eleve) {
-        Eleve existingEle = eleveService.getBy(eleve.getProf());
+        Eleve existingEle = eleveService.getBy(eleve.getId());
         if (existingEle == null) {
             return new ResponseEntity<Eleve>(HttpStatus.NOT_FOUND);
         } else {
@@ -68,12 +68,12 @@ public class EleveController {
     }
     // Supprime un eleve
     @RequestMapping(value = "", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deleteProf(@Param("mail") String mail) {
-       Eleve prof = eleveService.getBy(mail);
-        if (prof == null) {
+    public ResponseEntity<Void> deleteEleve( Long prof) {
+       Eleve eleve = eleveService.getBy(prof);
+        if (eleve == null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         } else {
-            eleveService.delete(mail);
+            eleveService.delete(prof);
             return new ResponseEntity<Void>(HttpStatus.GONE);
 
         }

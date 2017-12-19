@@ -21,18 +21,28 @@ public class DefaultEleveService implements EleveService{
         }
 
     @Override
-    public Eleve getBy(String prof) {
-        return eleveRepository.findOne(prof);
+    public Eleve getBy(String string) {
+        return null;
+    }
+
+    @Override
+    public Eleve getBy(Serializable id) {
+        return eleveRepository.findOne((Long) id);
+    }
+
+    @Override
+    public void delete(String string) {
+
     }
 
 
-        @Override
+    @Override
         public List<Eleve> findByProf(String prof) {
             return eleveRepository.findByProf(prof);
         }
 
     @Override
-    public void delete(String prof) {
-        eleveRepository.delete(prof);
+    public void delete(Serializable id) {
+        eleveRepository.delete((Long) id);
     }
 }

@@ -26,6 +26,11 @@ public class DefaultNAOService implements NAOService {
     }
 
     @Override
+    public NAO getBy(Serializable id) {
+        return null;
+    }
+
+    @Override
     public List<NAO> findByMailprof(String mail) {
         return naoRepository.findByMailprof(mail);
     }
@@ -33,5 +38,10 @@ public class DefaultNAOService implements NAOService {
     @Override
     public void delete(String ip) {
         naoRepository.delete(ip);
+    }
+
+    @Override
+    public void delete(Serializable id) {
+
     }
 }

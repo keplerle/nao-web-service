@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EleveRepository extends JpaRepository<Eleve, String> {
+public interface EleveRepository extends JpaRepository<Eleve, Long> {
     List<Eleve> findByProf(String prof);
 
 }
