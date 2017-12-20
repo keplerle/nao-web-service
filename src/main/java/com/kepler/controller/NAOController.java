@@ -68,7 +68,7 @@ public class NAOController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deleteNAO(@Param("ip") String ip) {
+    public ResponseEntity<Void> deleteNAO( String ip) {
         NAO person = naoService.getBy(ip);
         if (person == null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);

@@ -68,12 +68,12 @@ public class EleveController {
     }
     // Supprime un eleve
     @RequestMapping(value = "", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deleteEleve( Long prof) {
-       Eleve eleve = eleveService.getBy(prof);
+    public ResponseEntity<Void> deleteEleve( Long id) {
+       Eleve eleve = eleveService.getBy(id);
         if (eleve == null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         } else {
-            eleveService.delete(prof);
+            eleveService.delete(id);
             return new ResponseEntity<Void>(HttpStatus.GONE);
 
         }
